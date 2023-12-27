@@ -24,7 +24,7 @@ public class Desenha extends JFrame{
     
     @Override
     public void paint(Graphics g){
-         g.setColor(Color.red);
+        g.setColor(Color.red);
         algBres(g,10,40,60,90);
         algBres(g, 10, 40, 50, 100);
         algBres(g, 10, 40, 80, 40);
@@ -49,8 +49,7 @@ public class Desenha extends JFrame{
        
        if(dx < 0) {incX = -1; dx = -dx;}
        if(dy < 0) {incY = -1; dy = -dy;}
-        System.out.println(dx+"-"+dy+"-"+incX+"-"+incY);
-       
+     
        if(dy <= dx) {
            c = 2 * dx;
            m = 2 * dy;
