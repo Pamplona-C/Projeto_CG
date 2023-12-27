@@ -4,3 +4,9 @@ BoundaryFill
 primeiroProjeto
 PrimeiroProjeto
 .git
+build 
+nbproject
+test
+build.xml
+manifest.mf
+/AlgBres/dist/
