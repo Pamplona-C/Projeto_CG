@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 public class Desenha extends JFrame{
 
     public Desenha() {
-        this.setTitle("Linha Reta - Algotitmo Bresenhan");
+        this.setTitle("Geração de linhas - Analitico | Bresenhan | DDA");
         this.setSize(400,400);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -31,7 +31,7 @@ public class Desenha extends JFrame{
          g.setColor(Color.red);
         algBres(g,10,40,200,40);
         algBres(g, 10, 40, 10, 200);
-        //algBres(g, 10, 40, 200, WIDTH);
+        algBres(g, 10, 40, 200, 200);
     }
 
     private void algBres(Graphics g, int xi, int yi, int xf, int yf) {
