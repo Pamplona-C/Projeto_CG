@@ -26,7 +26,7 @@ public class Desenha extends JComponent {
         g.setColor(Color.red);
         poligono(g);
         g.setColor(Color.blue);
-        preeVarred(g, 50, 50, 150, 150);
+        preeVarred(g, 50, 50, 200, 150);
         g.setColor(Color.red);
         poligono(g);
     }
@@ -48,10 +48,10 @@ public class Desenha extends JComponent {
     }
     
     public void poligono(Graphics g){
-        algBres(g, 50, 50, 150, 50);
+        algBres(g, 50, 50, 200, 50);
         algBres(g,50,50,50,150);
-        algBres(g,50,150,150,150);
-        algBres(g,150,150,150,50);
+        algBres(g,50,150,200,150);
+        algBres(g,200,150,200,50);
     }
     
     public void algBres(Graphics g, int xi, int yi, int xf, int yf){
