@@ -2,8 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package algvarre;
-
+package algpreebf;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,45 +12,49 @@ import javax.swing.JComponent;
  *
  * @author pamplona
  */
-public class Desenha extends JComponent {
-
+public class Desenha extends JComponent{
+    
     int pixels[][];
     
-    public Desenha() {
-        
+    public Desenha(){
         pixels = new int[300][300];
     }
+    
     @Override
     public void paint(Graphics g){
-        g.setColor(Color.blue);
-        poligono(g);
-        g.setColor(Color.black);
-        preeVarred(g, 50, 50, 200, 150);
-        g.setColor(Color.blue);
-        poligono(g);
-    }
-    
-    public void preeVarred(Graphics g, int xmin, int ymin, int xmax, int ymax){
-        boolean liga = false;
         
-        for(int y = ymin; y <= ymax; y++){
-            for(int x = xmin; x <= xmax; x++){
-                
-                if (getPixel(g, x, y) > 0) {
-                    liga = !liga;
-                }
-                if(liga){
-                    putPixel(g, x, y);
-                }
-            }
-        }
+        g.setColor(Color.red);
+        poligono(g);
+        g.setColor(Color.blue);
+        preeBF(g, 170, 170);
+      
     }
     
     public void poligono(Graphics g){
-        algBres(g, 50, 50, 200, 50);
-        algBres(g,50,50,50,150);
-        algBres(g,50,150,200,150);
-        algBres(g,200,150,200,50);
+        algBres(g, 150, 150, 200, 150);
+        algBres(g,200,150,200,200);
+        algBres(g,200,200,150,200);
+        algBres(g,150,200,150,150);
+    }
+    
+    private void preeBF(Graphics g, int x, int y){
+        
+        if (getPixel(g, x, y) == 0) {
+            putPixel(g,x,y);
+            preeBF(g, x+1, y);
+            preeBF(g, x-1, y);
+            preeBF(g, x, y+1);
+            preeBF(g, x, y-1);
+        }
+    }
+     
+    void putPixel(Graphics g, int x, int y){
+        g.drawLine(x, y, x, y);
+        pixels[x-1][y-1] = 1;
+    }
+    
+    public int getPixel(Graphics g, int x, int y){
+        return pixels[x-1][y-1];
     }
     
     public void algBres(Graphics g, int xi, int yi, int xf, int yf){
@@ -103,15 +106,6 @@ public class Desenha extends JComponent {
                 yi = yi + incY;
             }
         }
-    }
-    
-    private void putPixel(Graphics g, int x, int y){
-        g.drawLine(x, y, x, y);
-        pixels[x-1][y-1] = 1;
-    }
-    
-    private int getPixel(Graphics g, int x, int y){
-        return pixels[x-1][y-1];
     }
     
 }

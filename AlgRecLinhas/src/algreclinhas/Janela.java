@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package algreclinhas;
 
+import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -25,7 +22,16 @@ public class Janela extends JFrame{
     }
     
     class Recorte extends JComponent{
-        
+        public Recorte(){
+            
+            addMouseListener(new MouseAdater){
+            
+                public void mousePressed(MouseEvent evt){
+                    
+                }
+            
+            }
+        }
     }
     
 }
