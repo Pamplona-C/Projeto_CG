@@ -28,7 +28,7 @@ public class Desenha extends JFrame{
          g.setColor(Color.red);
         algBres(g,10,40,200,40);
         algBres(g, 10, 40, 10, 200);
-        algBres(g, 10, 40, 100, 100);
+        algBres(g, 10, 40, 200, 200);
         algBres(g, 10, 200, 200, 200);
         algBres(g, 200, 200, 200, 40);
     }
