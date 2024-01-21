@@ -27,15 +27,17 @@ public class Desenha extends JComponent{
     }
     @Override
     public void paint(Graphics g){
-        g.setColor(Color.red);
+       
+        
+        criaLados();
+        g.setColor(Color.blue);
+        peeAGeo(g);
+        
+         g.setColor(Color.black);
         algBres(g,px1,py1,px2,py2);
         algBres(g,px2,py2,px3,py3);
         algBres(g,px3,py3,px4,py4);
         algBres(g,px4,py4,px1,py1);
-        
-        criaLados();
-        
-        peeAGeo(g);
         
     }
     private void algBres(Graphics g, int xi, int yi, int xf, int yf) {
