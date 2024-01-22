@@ -1,4 +1,5 @@
 AlgBoundaryFill
+CARLOSHENRIQUE
 AlgGeo
 BoundaryFill
 primeiroProjeto
@@ -15,3 +16,4 @@ manifest.mf
 /AlgPreeBF/dist/
 /AlgPreeAGeo/dist/
 /AlgVarreTodos/dist/
+/AlgCircParam/dist/
