@@ -2,6 +2,8 @@ package provagustavo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
 /**
@@ -10,13 +12,13 @@ import javax.swing.JFrame;
  */
 public class Desenha extends JFrame{
     
-
+    private int raio = 45;
     
     int pixels[][];
     
     public Desenha(){
         
-        pixels = new int[500][300];
+       
        
         
         this.setTitle("Prova de Computação Gráfica");
@@ -24,6 +26,15 @@ public class Desenha extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int centerX = e.getX();
+                int centerY = e.getY();
+                preeBF(getGraphics(), centerX, centerY);
+            }
+        });
         
       
     }
@@ -37,6 +48,9 @@ public class Desenha extends JFrame{
 
     
     public void paint(Graphics g){
+        
+        pixels = new int[500][300];
+        
         g.setColor(Color.blue);
         poligono(g);
         
@@ -45,10 +59,10 @@ public class Desenha extends JFrame{
         algBres(g, 400, 50, 100, 250);
         
         g.setColor(Color.red);
-        algCircBres(g, 45);
+        algCircBres(g, raio,250,150);
         
         g.setColor(Color.red);
-        preeBF(g, 230, 130);
+        //preeBF(g, 230, 130);
         
         
         
@@ -118,37 +132,38 @@ public class Desenha extends JFrame{
        }
     }
     
-    public void algCircBres(Graphics g, int raio) {
-        int x=0, y=raio, u=1, v=2 *raio-1, e=0;
-               
-        while(x<=y) {
-            simetria(g,x,y);
-            x++;
+    private void algCircBres(Graphics g, int raio, int x, int y) {
+        int a = 0, b = raio;
+        int u = 1;
+        int v = 2 * raio;
+        int e = 0;
+        while (a <= b) {
+            simetria(g, x, y, a, b);
+            a++;
             e = e + u;
             u = u + 2;
-            if (v<(2*e)) {y--; e=e-v; v=v-2;}
+            if (v < (2 * e)) {
+                b--;
+                e = e - v;
+                v = v - 2;
+            }
         }
-           
     }
     
-
-    private void simetria(Graphics g, int x, int y) {
-        putPixelCirc(g,x,y);
-        putPixelCirc(g,x,-y);
-        putPixelCirc(g,-x,y);
-        putPixelCirc(g,-x,-y);
-        
-        putPixelCirc(g,y,x);
-        putPixelCirc(g,y,-x);
-        putPixelCirc(g,-y,x);
-        putPixelCirc(g,-y,-x);
-        
-          
+    private void simetria(Graphics g, int x, int y, int a, int b) {
+        putPixelC(g, x, y, a, b);
+        putPixelC(g, x, y, a, -b);
+        putPixelC(g, x, y, -a, b);
+        putPixelC(g, x, y, -a, -b);
+        putPixelC(g, x, y, b, a);
+        putPixelC(g, x, y, b, -a);
+        putPixelC(g, x, y, -b, a);
+        putPixelC(g, x, y, -b, -a);
     }
-    private void putPixelCirc(Graphics g, int x, int y) {
-        int centerX = getWidth() / 2;  
-        int centerY = getHeight() / 2; 
-        g.drawLine(x + centerX, y + centerY, x + centerX, y + centerY);
+    private void putPixelC(Graphics g, int x, int y, int a, int b) {
+        g.drawLine(a + x, b + y, a + x, b + y);
+        pixels[x+a][y+b]=1;
+        
     }
     
     void putPixelBF(Graphics g, int x, int y){
