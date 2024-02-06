@@ -61,18 +61,15 @@ public class Desenha extends JFrame{
         g.setColor(Color.red);
         algCircBres(g, raio,250,150);
         
-        g.setColor(Color.red);
-        //preeBF(g, 230, 130);
-        
-        
         
     }
     
     private void preeBF(Graphics g, int x, int y) {
+        g.setColor(Color.red);
         if (getPixel(x, y) != 1) {
             
-            System.out.println(pixels[x][y]);
-            putPixelBF(g, x, y);
+            //System.out.println(pixels[x][y]);
+            putPixel(g, x, y);
             preeBF(g, x + 1, y);
             preeBF(g, x - 1, y);
             preeBF(g, x, y + 1);
@@ -165,11 +162,5 @@ public class Desenha extends JFrame{
         pixels[x+a][y+b]=1;
         
     }
-    
-    void putPixelBF(Graphics g, int x, int y){
-        g.drawLine(x, y, x, y);
-        pixels[x-1][y-1] = 1;
-    }
-        
         
 }
